@@ -1,3 +1,6 @@
 app.controller("ItemListCtrl", function($scope, ItemStorage) {
-  $scope.items = ItemStorage.getItemList();
+  ItemStorage.getItemList()
+  .then(function(itemCollection) {
+    $scope.items = itemCollection;
+  });
 });
