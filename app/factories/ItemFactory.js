@@ -1,5 +1,7 @@
   "use strict";
   app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
+    let currentUser = firebase.auth().currentUser;
+    console.log("currentUser", currentUser );
 
     let getItemList = function() {
       let items = [];

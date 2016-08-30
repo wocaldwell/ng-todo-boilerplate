@@ -3,7 +3,13 @@
 var app = angular.module("TodoApp", ['ngRoute'])
 .constant('FirebaseURL', "https://ng-todo-demo-4c81b.firebaseio.com/");
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, FBCreds) {
+  let authConfig = {
+    apiKey: FBCreds.apiKey,
+    authDomain: FBCreds.authDomain
+  };
+  firebase.initializeApp(authConfig);
+
   $routeProvider.
     when('/items/list', {
       templateUrl: 'partials/item-list.html',
