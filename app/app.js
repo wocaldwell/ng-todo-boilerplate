@@ -1,27 +1,34 @@
 "use strict";
 
-var app = angular.module("TodoApp", ['ngRoute'])
-.constant('FirebaseURL', "https://ng-todo-demo-4c81b.firebaseio.com/");
-
-app.config(function($routeProvider, FBCreds) {
-  let authConfig = {
-    apiKey: FBCreds.apiKey,
-    authDomain: FBCreds.authDomain
-  };
-  firebase.initializeApp(authConfig);
-
-  $routeProvider.
-    when('/items/list', {
-      templateUrl: 'partials/item-list.html',
-      controller: 'ItemListCtrl'
-    }).
-    when('/items/new', {
-      templateUrl: 'partials/item-new.html',
-      controller: 'ItemNewCtrl'
-    }).
-    when('/items/details/:itemId',  {
-      templateUrl: 'partials/item-details.html ',
-      controller: 'ItemViewCtrl'
-    }).
-    otherwise('/items/list');
-});
+$scope.items = [
+  {
+    id: 0,
+    task: "mow the lawn",
+    isCompleted: false,
+    dueDate: "12/5/17",
+    assignedTo: "Greg",
+    location: "Joe's house",
+    urgency: "low",
+    dependencies: "sunshine, clippers, hat, water, headphones"
+  },
+  {
+    id: 1,
+    task: "grade quizzes",
+    isCompleted: false,
+    dueDate: "12/5/15",
+    assignedTo: "Christina",
+    location: "NSS",
+    urgency: "high",
+    dependencies: "wifi, tissues, vodka"
+  },
+  {
+    id: 2,
+    task: "take a nap",
+    isCompleted: false,
+    dueDate: "5/21/16",
+    assignedTo: "Joe",
+    location: "Porch of lakefront cabin",
+    urgency: "medium",
+    dependencies: "hammock, silence"
+  }
+];
